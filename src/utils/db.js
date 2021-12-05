@@ -4,6 +4,8 @@ const Task = require('../resources/tasks/task.model');
 
 const db = {
   Users: [],
+  Boards: [],
+  Tasks: [],
 };
 
 // init DB
@@ -54,6 +56,62 @@ const removeUser = (id) => {
   return true;
 };
 
+// Boards
+
+const getBoardById = (id) => db.Boards.filter((board) => board.id === id)[0];
+
+const saveBoard = (board) => {
+  const newBoard = new Board(board);
+  db.Boards.push(newBoard);
+  return newBoard;
+};
+
+const updateBoard = (id, boardData) => {
+  if (!db.Boards.some((board) => board.id === id)) {
+    return undefined;
+  }
+  db.Boards = db.Boards.filter((board) => board.id !== id);
+  db.Boards.push({ id, ...boardData });
+  return { id, ...boardData };
+};
+
+const removeBoard = (id) => {
+  if (!db.Boards.some((board) => board.id === id)) {
+    return false;
+  }
+  db.Boards = db.Boards.filter((board) => board.id !== id);
+  db.Tasks = db.Tasks.filter((task) => task.boardId !== id);
+  return true;
+};
+
+// Tasks
+
+const getTaskById = (id) => db.Tasks.filter((task) => task.id === id)[0];
+
+const saveTask = (task) => {
+  // console.log("task--->"+task);
+  const newTask = new Task(task);
+  db.Tasks.push(newTask);
+  return newTask;
+};
+
+const updateTask = (id, taskData) => {
+  if (!db.Tasks.some((task) => task.id === id)) {
+    return undefined;
+  }
+  db.Tasks = db.Tasks.filter((task) => task.id !== id);
+  db.Tasks.push({ id, ...taskData });
+  return { id, ...taskData };
+};
+
+const removeTask = (id) => {
+  if (!db.Tasks.some((task) => task.id === id)) {
+    return false;
+  }
+  db.Tasks = db.Tasks.filter((task) => task.id !== id);
+  return true;
+};
+
 
 module.exports = {
   getAllEntities,
@@ -62,5 +120,15 @@ module.exports = {
   saveUser,
   updateUser,
   removeUser,
+
+  getBoardById,
+  saveBoard,
+  updateBoard,
+  removeBoard,
+
+  getTaskById,
+  saveTask,
+  updateTask,
+  removeTask,
 
 };
