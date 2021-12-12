@@ -19,6 +19,7 @@ class Board implements IBoard{
   constructor({
     id = uuidv4(),
     title = 'string',
+    // eslint-disable-next-line no-array-constructor
     columns = new Array<IColumn>()
   } = {}) {
     this.id = id;
