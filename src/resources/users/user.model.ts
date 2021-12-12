@@ -1,5 +1,5 @@
-// const uuid = require('uuid');
-import { v4 as uuidv4 } from 'uuid';
+const uuid = require('uuid');
+// import { uuidv4 } from 'uuid';
 // console.log(uuid)
 
 interface IUser {
@@ -19,7 +19,7 @@ class User implements IUser{
   password: string;
 
   constructor({
-    id = uuidv4(),
+    id = uuid.v4(),
     name = 'USER',
     login = 'user',
     password = 'P@55w0rd'
@@ -38,7 +38,6 @@ class User implements IUser{
   static fromRequest(body: IUser) {
     return new User(body);
   }
-
 }
 
 module.exports = User;

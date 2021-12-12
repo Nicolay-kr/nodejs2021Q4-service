@@ -1,4 +1,4 @@
-import * as DB from'../../utils/db';
+import * as DB from '../../utils/db';
 // const NOT_FOUND_ERROR = require("")
 interface IUser {
   id: string,

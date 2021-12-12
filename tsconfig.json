@@ -21,13 +21,14 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitAny": true
   },
   "exclude": [
     "node_modules/"
   ],
   "include": [
     "./src/**/*.ts",
-    "./src/*.ts",
+    "./src/*.ts"
   ]
 }

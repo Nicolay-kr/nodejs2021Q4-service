@@ -1,38 +1,19 @@
-// const uuid = require('uuid');
 import { v4 as uuidv4 } from 'uuid';
+import {Column,IColumn} from './column.model';
 
-
-
-interface IColumn {
-  id: string,
-  title: string,
-  order: number
-}
 interface IBoard {
   id: string,
   title: string,
   columns: Array<IColumn>
 }
 
-class Column implements IColumn {
-  id: string;
-
-  order: number;
-
-  title: string;
-
-  constructor({ id = uuidv4(), title = '', order = 0 }) {
-    this.id = id;
-    this.title = title;
-    this.order = order;
-  }
-
-}
 
 class Board implements IBoard{
 
   id: string;
+
   title: string;
+
   columns: Array<IColumn>;
   
   constructor({

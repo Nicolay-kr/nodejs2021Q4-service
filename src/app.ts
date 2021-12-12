@@ -9,6 +9,7 @@ import { router as taskRouter } from './resources/tasks/task.router';
 
 export {}
 
+
 const app: Application = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 
@@ -28,4 +29,4 @@ app.use('/users', userRouter);
 app.use('/boards', boardRouter);
 boardRouter.use('/:boardId/tasks', taskRouter);
 
-module.exports = app;
+export {app};
