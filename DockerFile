@@ -1,6 +1,7 @@
-FROM node:16.13.1-alpine
-WORKDIR /nodejs2021Q4-service/
-ADD ./"package*.json" ./
+FROM node:erbium-alpine3.15
+WORKDIR /usr/app
+COPY ./"package*.json" ./
 RUN npm install
-ADD  . . 
-CMD ["npm", "start"]
+COPY  . . 
+EXPOSE ${PORT}
+CMD ["npm", "run", "dev"]

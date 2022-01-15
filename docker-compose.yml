@@ -1,35 +1,32 @@
-version: '3.3'
+version: '3'
 services:
   postgres:
-    restart: always
+    container_name: postgres
     image: postgres-image
     build: ./database/
     networks:
       - skynet
-    container_name: postgres
     ports:
       - ${POSTGRES_PORT}:${POSTGRES_PORT}
     env_file: ./.env
     volumes:
       - pg_data:${PGDATA}
   node:
-    restart: always
+    container_name: node
     image: app-image
+    restart: always
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: ./Dockerfile
     networks:
       - skynet
-    container_name: node
     depends_on:
       - postgres
     ports:
       - ${PORT}:${PORT}
-    environment:
-      POSTGRES_HOST: postgres
     volumes:
-      - ./src:/nodejs2021Q4-service/src
-      - app_logs:/nodejs2021Q4-service/logs
+      - ./src:/usr/app/src
+      - app_logs:/usr/app
 networks:
   skynet:
     driver: bridge
