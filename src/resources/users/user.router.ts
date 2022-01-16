@@ -1,6 +1,7 @@
-import {Request, Response} from 'express';
+import {Router, Request, Response} from 'express';
+// import {StatusCodes} from 'http-status-codes'
 
-const router = require('express').Router();
+const router = Router();
 const User = require('./user.model.ts');
 const userService = require('./user.service.ts');
 

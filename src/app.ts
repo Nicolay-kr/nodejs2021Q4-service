@@ -1,5 +1,5 @@
 import express, {Application, Request, Response, NextFunction} from 'express';
-// const express = require('express');
+import cors from 'cors';
 import swaggerUI from 'swagger-ui-express';
 import path from 'path';
 import YAML from 'yamljs';
@@ -16,6 +16,7 @@ export {}
 const app: Application = express();
 const swaggerDocument = YAML.load(path.join(__dirname, '../doc/api.yaml'));
 
+app.use(cors);
 app.use(express.json());
 app.use(morganLog);
 handleException();

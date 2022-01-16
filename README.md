@@ -80,3 +80,25 @@ cd {repository name}
 ```
 docker-compose up --build
 ```
+## Postgres command
+
+Connects to a database under a specific user	-d: used to state the database name 
+-U:used to state the database user
+```
+psql -d database -U user -W	
+```
+
+List available databases
+```
+\l
+```
+
+Switch connection to a new database
+```
+\c dbname
+```
+
+List available tables
+```
+\dt
+```

@@ -1,4 +1,3 @@
-// const { PORT } = require('./common/config');
 import {PORT} from './common/config';
 
 import {app} from './app';
