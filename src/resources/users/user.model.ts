@@ -1,6 +1,7 @@
-const uuid = require('uuid');
-// import { uuidv4 } from 'uuid';
-// console.log(uuid)
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+
+// const uuid = require('uuid');
+
 
 interface IUser {
   id: string,
@@ -9,35 +10,18 @@ interface IUser {
   password: string
 }
 
-class User implements IUser{
-  id: string;
+@Entity({ name: "users" })
+export class User implements IUser{
+  @PrimaryGeneratedColumn()
+  id!: string;
 
-  login: string;
+  @Column()
+  login!: string;
 
-  name: string;
+  @Column()
+  name!: string;
 
-  password: string;
+  @Column()
+  password!: string;
 
-  constructor({
-    id = uuid.v4(),
-    name = 'USER',
-    login = 'user',
-    password = 'P@55w0rd'
-  } = {}) {
-    this.id = id;
-    this.name = name;
-    this.login = login;
-    this.password = password;
-  }
-
-  static toResponse(user: IUser) {
-    const { id, name, login } = user;
-    return { id, name, login };
-  }
-
-  static fromRequest(body: IUser) {
-    return new User(body);
-  }
 }
-
-module.exports = User;
