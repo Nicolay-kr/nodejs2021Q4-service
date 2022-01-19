@@ -25,9 +25,9 @@ const remove = (id:string) => userRepository.delete(id);
  */
 const save = async(newUser:IUser) => {
   const user = await userRepository.create(newUser);
-  const results = await userRepository.save(user);
-  userRepository.save(user)
-  return results
+  const {id, name, login} = await userRepository.save(user)
+  const result = {id, name, login}
+  return result
 };
 /**
  * call the function update(id,user) from user.memory.repository.js
