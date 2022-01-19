@@ -102,3 +102,8 @@ List available tables
 ```
 \dt
 ```
+
+Describe a table such as a column, type, modifiers of columns, etc.
+```
+\d table_name
+```

@@ -8,7 +8,7 @@ const connectionOptions: ConnectionOptions = {
   port: Number(POSTGRES_PORT),
   username: POSTGRES_USER,
   password: POSTGRES_PASSWORD,
-  database: "test",
+  database: "postgres",
   entities: [User],
   synchronize:false,
   dropSchema: false,

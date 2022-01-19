@@ -12,6 +12,13 @@ function handleException(): void {
                 // eslint-disable-next-line no-process-exit
                 process.exit(1);
             });
+        })
+        .on('UnhandledPromiseRejectionWarning', (err) => {
+            console.error(err, 'Unhandled Promise RejectionWarning');
+            logger.error(err.stack!, () => {
+                // eslint-disable-next-line no-process-exit
+                process.exit(1);
+            });
         });
 }
 
