@@ -1,5 +1,5 @@
 import { boardRepository } from './board.memory.repository';
-// import {IBoard} from './board.model'
+import {IBoard} from './board.model'
 
 
 /**
@@ -12,36 +12,25 @@ import { boardRepository } from './board.memory.repository';
   * @param {String} id board id
   * @returns {fuction} return call of function get(id) from board.memory.repository.js
   */
- const get = (id:string) => boardRepository.findOne(id);
+ const get = (id:string) => boardRepository.getBoardById(id);
  /**
   * call the function remove(board) from board.memory.repository.js
   * @param {String} id board id
   * @returns {fuction} return call of function remove(board) from board.memory.repository.js 
   */
- const remove = (id:string) => boardRepository.delete(id);
+ const remove = (id:string) => boardRepository.deleteBoardById(id);
  /**
   * call the function save(board) from board.memory.repository.js
   * @param {String} id board id
   * @returns {fuction} return call of function save(board) from board.memory.repository.js 
   */
-//  const save = async(newUser:IUser) => {
-//    const board = await boardRepository.create(newUser);
-//    const results = await boardRepository.save(board);
-//    boardRepository.save(board)
-//    return results
-//  };
+ const save = async(newUser:IBoard) => boardRepository.addBoard(newUser);
  /**
   * call the function update(id,board) from board.memory.repository.js
   * @param {String} id id of board
   * @param {Object} board object of board with updated data
   * @returns return call of function update(id,board) from board.memory.repository.js
   */
-//  const update = async (id:string, updateUser:IUser) => {
-//    const currentUser = await boardRepository.findOne(id);
-//    boardRepository.merge(currentUser!, updateUser);
-//    await boardRepository.save(updateUser!);
-//    return updateUser;
-//  };
+ const update = async (id:string, updateBoard:IBoard)  => boardRepository.updateBoard(id, updateBoard);
  
-//  export { getAll, get, remove, update, save };
- export { getAll, get, remove};
+ export { getAll, get, remove, save, update};

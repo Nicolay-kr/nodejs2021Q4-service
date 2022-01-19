@@ -2,6 +2,7 @@ import { ConnectionOptions } from 'typeorm';
 import { POSTGRES_HOST, POSTGRES_PORT, POSTGRES_USER,POSTGRES_PASSWORD } from './config';
 import { User } from '../resources/users/user.model';
 import { Board } from '../resources/boards/board.model';
+import { Task } from '../resources/tasks/task.model';
 import { ColumnModel } from '../resources/boards/column.model';
 
 const connectionOptions: ConnectionOptions = {
@@ -11,7 +12,7 @@ const connectionOptions: ConnectionOptions = {
   username: POSTGRES_USER,
   password: POSTGRES_PASSWORD,
   database: "postgres",
-  entities: [User, Board, ColumnModel],
+  entities: [User, Board, ColumnModel, Task],
   synchronize:false,
   dropSchema: false,
   migrations: ['./src/migrations/**/*.ts'],

@@ -5,7 +5,7 @@ import express, {Application, Request, Response, NextFunction} from 'express';
 // import YAML from 'yamljs';
 import { router as userRouter } from '../resources/users/user.router';
 import { router as boardRouter } from '../resources/boards/board.router';
-// import { router as taskRouter } from './resources/tasks/task.router';
+import { router as taskRouter } from '../resources/tasks/task.router';
 import {morganLog} from '../middleware/morgan';
 import errorHandler from '../middleware/unhandledErrorsHandler';
 import handleException from '../middleware/uncaughtErrorsHandler';
@@ -35,7 +35,7 @@ export const expressLoader = async ({ app }: LoaderArgs): Promise<Application> =
 
   app.use('/users', userRouter);
   app.use('/boards', boardRouter);
-  // boardRouter.use('/:boardId/tasks', taskRouter);
+  boardRouter.use('/:boardId/tasks', taskRouter);
 
   app.use(errorHandler);
 
