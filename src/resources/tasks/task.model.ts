@@ -13,38 +13,26 @@ interface ITask {
 
 class Task implements ITask {
   @PrimaryGeneratedColumn('uuid')
-  id: string;
+  id!: string;
 
-  title: string;
+  @Column('varchar', {length: 255, default: ''})
+  title!: string;
 
-  order: number;
+  @Column('integer', {default: 0})
+  order!: number;
 
-  description: string;
+  @Column('varchar', {length: 255, default: ''})
+  description!: string;
 
-  userId: string|null;
+  @Column('varchar', {length: 255, default: null, nullable: true,})
+  userId!: string|null;
 
-  boardId: string|null;
+  @Column('varchar', {length: 255, default: null, nullable: true,})
+  boardId!: string|null;
 
-  columnId: string|null;
-
-  constructor({
-    boardId = null,
-    id = uuidv4(),
-    title = 'New task',
-    order = 0,
-    description = 'No description',
-    userId = null,
-    columnId = null,
-  } = {}) {
-    this.id = id;
-    this.title = title;
-    this.order = order;
-    this.description = description;
-    this.userId = userId;
-    this.boardId = boardId;
-    this.columnId = columnId;
-  }
+  @Column('varchar', {length: 255, default: null, nullable: true,})
+  columnId!: string|null;
 }
 
 
-export {Task};
+export {Task, ITask};

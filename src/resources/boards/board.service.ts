@@ -6,7 +6,7 @@ import { boardRepository } from './board.memory.repository';
  * call the function getAll() from board.memory.repository.js
  * @returns {fuction} return call of function getAll() 
  */
- const getAll = () => boardRepository.getAll();
+ const getAll = () => boardRepository.find();
  /**
   * call the function get(id) from board.memory.repository.js
   * @param {String} id board id

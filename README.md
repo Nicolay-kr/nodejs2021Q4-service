@@ -79,7 +79,7 @@ cd {repository name}
 ```
 
 ```
-docker-compose up --build
+docker-compose up -d
 ```
 ## Postgres command
 
