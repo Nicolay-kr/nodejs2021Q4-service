@@ -12,7 +12,7 @@ export interface IUser {
 
 @Entity({ name: "users" })
 export class User implements IUser{
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id!: string;
 
   @Column()

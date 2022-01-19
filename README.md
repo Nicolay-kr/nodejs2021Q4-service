@@ -20,8 +20,9 @@ npm install
 ## Running application
 
 ```
-npm start
+npm dev
 ```
+if db tables was changed use npm run migrate
 
 After starting the app on port (4000 as default) you can open
 in your browser OpenAPI documentation by typing http://localhost:4000/doc/.
