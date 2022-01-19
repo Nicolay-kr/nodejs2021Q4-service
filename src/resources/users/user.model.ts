@@ -15,12 +15,12 @@ export class User implements IUser{
   @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @Column()
+  @Column('varchar', {length: 255, default: 'login'})
   login!: string;
 
-  @Column()
+  @Column('varchar', {length: 255, default: 'user'})
   name!: string;
 
-  @Column()
+  @Column('varchar', {length: 255, default: 'Pxsd2334~', select: false})
   password!: string;
 }

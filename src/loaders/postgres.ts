@@ -1,5 +1,5 @@
 import { createConnection, Connection } from 'typeorm';
-import connectionOptions from './ormconfig';
+import connectionOptions from '../common/ormconfig';
 
 export const postgresLoader = async ():Promise<Connection>=>{
   try {

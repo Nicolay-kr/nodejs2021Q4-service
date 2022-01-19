@@ -54,3 +54,48 @@
     at processTicksAndRejections (internal/process/task_queues.js:95:5)
 [32m[32minfo[32m[39m:    GET / 200 {} {}
 [32m[32minfo[32m[39m:    GET /favicon.ico 404 {} {}
+[32m[32minfo[32m[39m:    GET /boards 200 {"login":"DAN","name":"Jane Doe","password":"1234"} {}
+[32m[32minfo[32m[39m:    GET /users 200 {} {}
+[32m[32minfo[32m[39m:    POST /users 201 {"name":"TEST_USER","login":"test_user","password":"T35t_P@55w0rd"} {}
+[32m[32minfo[32m[39m:    GET /users/514894e3-cb19-4230-b79c-87f3156fb5bd 200 {} {}
+[32m[32minfo[32m[39m:    DELETE /users/514894e3-cb19-4230-b79c-87f3156fb5bd 204 {} {}
+[32m[32minfo[32m[39m:    POST /users 201 {"name":"TEST_USER","login":"test_user","password":"T35t_P@55w0rd"} {}
+[32m[32minfo[32m[39m:    POST /users 201 {"name":"TEST_USER","login":"test_user","password":"T35t_P@55w0rd"} {}
+[32m[32minfo[32m[39m:    PUT /users/1027f625-109f-42bb-91e7-de52ca32d7a5 200 {"name":"Autotest updated TEST_USER","login":"test_user","password":"T35t_P@55w0rd","id":"1027f625-109f-42bb-91e7-de52ca32d7a5"} {}
+[32m[32minfo[32m[39m:    GET /users/1027f625-109f-42bb-91e7-de52ca32d7a5 200 {} {}
+[32m[32minfo[32m[39m:    DELETE /users/1027f625-109f-42bb-91e7-de52ca32d7a5 204 {} {}
+[32m[32minfo[32m[39m:    POST /users 201 {"name":"TEST_USER","login":"test_user","password":"T35t_P@55w0rd"} {}
+[32m[32minfo[32m[39m:    DELETE /users/1b4551c3-647e-4026-b3dc-8d5c8ea415a8 204 {} {}
+[32m[32minfo[32m[39m:    POST /users 201 {"name":"TEST_USER","login":"test_user","password":"T35t_P@55w0rd"} {}
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[32m[32minfo[32m[39m:    DELETE /boards/undefined - {} {}
+[32m[32minfo[32m[39m:    DELETE /boards/undefined - {} {}
+[32m[32minfo[32m[39m:    POST /boards - {"title":"Autotest board","columns":[{"title":"Backlog","order":1},{"title":"Sprint","order":2}]} {}
+[32m[32minfo[32m[39m:    POST /boards - {"title":"Autotest board","columns":[{"title":"Backlog","order":1},{"title":"Sprint","order":2}]} {}
+[32m[32minfo[32m[39m:    POST /boards - {"title":"Autotest board","columns":[{"title":"Backlog","order":1},{"title":"Sprint","order":2}]} {}
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[32m[32minfo[32m[39m:    GET /users 200 {} {}
+[32m[32minfo[32m[39m:    POST /users 201 {"name":"TEST_USER","login":"test_user","password":"T35t_P@55w0rd"} {}
+[32m[32minfo[32m[39m:    GET /users/447c7d51-4c11-4ea3-bbd5-e0a1f1bb158f 200 {} {}
+[32m[32minfo[32m[39m:    DELETE /users/447c7d51-4c11-4ea3-bbd5-e0a1f1bb158f 204 {} {}
+[32m[32minfo[32m[39m:    POST /users 201 {"name":"TEST_USER","login":"test_user","password":"T35t_P@55w0rd"} {}
+[32m[32minfo[32m[39m:    POST /users 201 {"name":"TEST_USER","login":"test_user","password":"T35t_P@55w0rd"} {}
+[32m[32minfo[32m[39m:    PUT /users/448f9abb-30c7-449b-bfd9-7540f4244173 200 {"name":"Autotest updated TEST_USER","login":"test_user","password":"T35t_P@55w0rd","id":"448f9abb-30c7-449b-bfd9-7540f4244173"} {}
+[32m[32minfo[32m[39m:    GET /users/448f9abb-30c7-449b-bfd9-7540f4244173 200 {} {}
+[32m[32minfo[32m[39m:    DELETE /users/448f9abb-30c7-449b-bfd9-7540f4244173 204 {} {}
+[32m[32minfo[32m[39m:    POST /users 201 {"name":"TEST_USER","login":"test_user","password":"T35t_P@55w0rd"} {}
+[32m[32minfo[32m[39m:    DELETE /users/3f4f8b12-5b12-4a0e-a18e-c863824dfdf2 204 {} {}
+[32m[32minfo[32m[39m:    POST /users 201 {"name":"TEST_USER","login":"test_user","password":"T35t_P@55w0rd"} {}
+[31m[31merror[31m[39m:   undefined
+[32m[32minfo[32m[39m:    DELETE /boards/undefined - {} {}
+[32m[32minfo[32m[39m:    POST /boards - {"title":"Autotest board","columns":[{"title":"Backlog","order":1},{"title":"Sprint","order":2}]} {}
+[32m[32minfo[32m[39m:    POST /boards - {"title":"Autotest board","columns":[{"title":"Backlog","order":1},{"title":"Sprint","order":2}]} {}
+[32m[32minfo[32m[39m:    DELETE /boards/undefined - {} {}
+[32m[32minfo[32m[39m:    POST /boards - {"title":"Autotest board","columns":[{"title":"Backlog","order":1},{"title":"Sprint","order":2}]} {}

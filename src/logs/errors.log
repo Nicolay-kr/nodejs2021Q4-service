@@ -16,3 +16,13 @@
     at Function.listen (C:\Users\Mikalai_Kryshchanovi\Desktop\RSS\NodeJS\nodejs2021Q4-service\node_modules\express\lib\application.js:618:24)
     at startServer (C:\Users\Mikalai_Kryshchanovi\Desktop\RSS\NodeJS\nodejs2021Q4-service\src\server.ts:9:7)
     at processTicksAndRejections (internal/process/task_queues.js:95:5)
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined
+[31m[31merror[31m[39m:   undefined

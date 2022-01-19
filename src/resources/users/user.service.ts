@@ -42,5 +42,4 @@ const update = async (id:string, updateUser:IUser) => {
   return updateUser;
 };
 
-// export { getAll, get, remove, save, update };
 export { getAll, get, remove, update, save };

@@ -1,26 +1,27 @@
-import { v4 as uuidv4 } from 'uuid';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Board } from "./board.model";
 
-interface IColumn {
+interface IColumnModel {
   id: string,
   title: string,
   order: number
 }
 
-class Column implements IColumn {
-  id: string;
+@Entity({ name: "columns" })
+class ColumnModel implements IColumnModel {
 
-  order: number;
+  @PrimaryGeneratedColumn('uuid')
+  id!: string;
 
-  title: string;
+  @Column('integer',{default: 0})
+  order!: number;
 
-  constructor({ id = uuidv4(), title = '', order = 0 }) {
-    this.id = id;
-    this.title = title;
-    this.order = order;
-  }
+  @Column()
+  title!: string;
+
+  @ManyToOne(() => Board, board => board.columns)
+  board!:Board;
 
 }
 
-
-
-export {Column, IColumn};
+export {ColumnModel, IColumnModel};

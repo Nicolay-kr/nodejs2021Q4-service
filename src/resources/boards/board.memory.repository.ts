@@ -1,48 +1,88 @@
-import * as DB from'../../utils/db';
+import { EntityRepository, getConnection, Repository } from "typeorm";
+import {Board, IBoard} from './board.model';
+import { ColumnModel, IColumnModel } from './column.model';
 
 export{}
 
-interface IColumn {
-    id: string,
-    title: string,
-    order: number
-  }
-  interface IBoard {
-    id: string,
-    title: string,
-    columns: Array<IColumn>
+
+@EntityRepository(Board)
+class BoardRepository extends Repository<Board> {
+  getAll() {
+    return this.createQueryBuilder("board")
+      .leftJoinAndSelect('board.columns','columns')
+      .getMany();
   }
 
-/**
- * call the function getAllEntities(TABLE_NAME) from db.js which return object with all boards
- * @returns {fuction} return call of function DB.getAllEntities(TABLE_NAME) which return object with all boards
- */
-const getAll = async () => DB.getAllBoards();
-/**
- * call the function getboardById(id) from db.js which return object of define board
- * @param {String} id board id
- * @returns {fuction} return call of function DB.getboardById(id) which return object of the define board
- */
-const get = async (id:string) => DB.getBoardById(id);
-/**
- * call the function removeboard(id) from db.js which delete define board and it tasks from DB if he is in DB
- * @param {String} id board id
- * @returns {fuction} return call of function DB.removeboard(id) which delete define board 
- * and it task from DB if it is there, which return true if board is in DB and false if he isn't. 
- */
-const remove = async (id:string) => DB.removeBoard(id);
-/**
- * call the function saveboard(board) from db.js which save object of new board to DB
- * @param {Object} board object new board
- * @returns {fuction} return call of function DB.saveboard(board) which save new board 
- */
-const save = async (board:IBoard) => DB.saveBoard(board);
-/**
- * call the function updateboard(id, board) from db.js which update object of one define board in DB
- * @param {String} id id of board
- * @param {Object} board object of board with updated data
- * @returns return call of function DB.updateboard(id, board) which update define board 
- */
-const update = async (id:string, board:IBoard) => DB.updateBoard(id, board);
+  async addBoard({title, columns}:Partial<IBoard>) {
+    const board = new Board();
+    await this.setNewBoardData(board, title, columns)
+    return this.getBoardById("users")
+  }
 
-export{ getAll, get, remove, save, update };
+  async getBoardById(id: string) {
+    return this.getBoardById("board")
+    .leftJoinAndSelect('board.columns', 'columns')
+    .where('board.id = :id', { id })
+    .getOne()
+  }
+
+  async updateBoard(id: string, {title, columns}:Partial<IBoard>) {
+    await this.deleteColumnsForBoardId(id)
+    const exBoard = await this.getBoardById("board")
+      .where('board.id = :id', { id })
+      .getOne()
+
+    if(exBoard) {
+      await this.setNewBoardData(exBoard, title, columns)
+      return this.getBoardById(id)
+    }
+  }
+
+  async deleteBoardById(id: string) {
+    await this.deleteColumnsForBoardId(id)
+    return this.createQueryBuilder()
+      .delete()
+      .from(Board)
+      .where('board.id = :id', { id })
+      .execute();
+  }
+
+  async deleteColumnsForBoardId(id: string) {
+    const columns = await this.createQueryBuilder()
+    .relation(Board,'columns')
+    .of(id)
+    .loadMany()
+
+    await Promise.all(columns.map(async({id:columnId}) => {
+      await this.createQueryBuilder()
+      .delete()
+      .from(ColumnModel)
+      .where('board.id = :id', {id:columnId})
+      .execute()
+    }))
+  }
+
+  async setNewBoardData(board: Board,title?:string, columns?:IColumnModel[]) {
+    const connectionManager = getConnection().manager;
+    if(board) {
+      board.title = title || board.title || '';
+
+      await connectionManager.save(board);
+
+      if(columns){
+        await Promise.all(columns.map(async({id:columnId, title:columnTitle, order}) => {
+          const column = new ColumnModel();
+          column.id = columnId;
+          column.title = columnTitle;
+          column.order = order;
+          column.board = board;
+          await connectionManager.save(column);
+        }))
+      }
+    }
+  }
+
+
+}
+
+export  const boardRepository = getConnection().getCustomRepository(BoardRepository);
