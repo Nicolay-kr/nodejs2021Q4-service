@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 interface ITask {
   id?: string,
@@ -9,8 +9,10 @@ interface ITask {
   columnId: string|null,
   userId: string|null,
 }
+@Entity({ name: "tasks" })
 
 class Task implements ITask {
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   title: string;

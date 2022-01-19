@@ -1,34 +1,22 @@
-import { v4 as uuidv4 } from 'uuid';
-import {Column,IColumn} from './column.model';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from "typeorm";
+import {ColumnModel, IColumnModel} from './column.model';
 
 interface IBoard {
   id: string,
   title: string,
-  columns: Array<IColumn>
+  columns: Array<IColumnModel>
 }
 
-
+@Entity({ name: "boards" })
 class Board implements IBoard{
-
-  id: string;
-
-  title: string;
-
-  columns: Array<IColumn>;
+  @PrimaryGeneratedColumn('uuid')
+  id!: string;
   
-  constructor({
-    id = uuidv4(),
-    title = 'string',
-    // eslint-disable-next-line no-array-constructor
-    columns = new Array<IColumn>()
-  } = {}) {
-    this.id = id;
-    this.title = title;
-    this.columns = columns.map(
-      (item: IColumn) =>
-          new Column({ id: item.id, title: item.title, order: item.order })
-  );
-  }
-}
+  @Column('varchar', {length: 255, default: ''})
+  title!: string;
 
-export {Board};
+  @OneToMany(()=> ColumnModel , column => column.board)
+  columns!: Array<IColumnModel>;
+
+}
+export {Board, IBoard}
