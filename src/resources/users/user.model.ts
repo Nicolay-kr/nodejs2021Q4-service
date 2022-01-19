@@ -3,7 +3,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 // const uuid = require('uuid');
 
 
-interface IUser {
+export interface IUser {
   id: string,
   name: string,
   login: string,
@@ -23,5 +23,4 @@ export class User implements IUser{
 
   @Column()
   password!: string;
-
 }

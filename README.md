@@ -107,3 +107,11 @@ Describe a table such as a column, type, modifiers of columns, etc.
 ```
 \d table_name
 ```
+Select all users
+```
+SELECT * FROM users;
+```
+Delete all content in table user
+```
+TRUNCATE users;
+```
