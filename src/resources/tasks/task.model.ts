@@ -13,25 +13,25 @@ interface ITask {
 
 class Task implements ITask {
   @PrimaryGeneratedColumn('uuid')
-  id!: string;
+  id: string;
 
   @Column('varchar', {length: 255, default: ''})
-  title!: string;
+  title: string;
 
   @Column('integer', {default: 0})
-  order!: number;
+  order: number;
 
   @Column('varchar', {length: 255, default: ''})
-  description!: string;
+  description: string ;
 
   @Column('varchar', {length: 255, default: null, nullable: true,})
-  userId!: string|null;
+  userId: string|null;
 
   @Column('varchar', {length: 255, default: null, nullable: true,})
-  boardId!: string|null;
+  boardId: string|null;
 
   @Column('varchar', {length: 255, default: null, nullable: true,})
-  columnId!: string|null;
+  columnId: string|null;
 }
 
 

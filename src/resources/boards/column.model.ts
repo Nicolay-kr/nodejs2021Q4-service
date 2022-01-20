@@ -11,16 +11,16 @@ interface IColumnModel {
 class ColumnModel implements IColumnModel {
 
   @PrimaryGeneratedColumn('uuid')
-  id!: string;
+  id: string;
 
   @Column('integer',{default: 0})
-  order!: number;
+  order: number;
 
-  @Column()
-  title!: string;
+  @Column('varchar', { length: 255, default: '' })
+  title: string;
 
-  @ManyToOne(() => Board, board => board.columns, {onDelete:'CASCADE'})
-  board!:Board;
+  @ManyToOne(() => Board, board => board.columns)
+  board: Board;
 
 }
 

@@ -25,7 +25,7 @@ class BoardRepository extends Repository<Board> {
 
   async updateBoard(id: string, {title, columns}:Partial<IBoard>) {
     await this.deleteColumnsForBoardId(id)
-    const exBoard = await this.createQueryBuilder("board")
+    const exBoard = await this.createQueryBuilder()
       .where('board.id = :id', { id })
       .getOne()
 
@@ -39,7 +39,7 @@ class BoardRepository extends Repository<Board> {
 
   async deleteBoardById(id: string) {
     await this.deleteColumnsForBoardId(id)
-    return this.createQueryBuilder("board")
+    return this.createQueryBuilder()
       .delete()
       .from(Board)
       .where('board.id = :id', { id })
@@ -47,13 +47,13 @@ class BoardRepository extends Repository<Board> {
   }
 
   async deleteColumnsForBoardId(id: string) {
-    const columns = await this.createQueryBuilder("board")
-    .relation(Board,'columns')
+    const columns = await this.createQueryBuilder()
+    .relation(Board, 'columns')
     .of(id)
     .loadMany()
 
     await Promise.all(columns.map(async({id:columnId}) => {
-      await this.createQueryBuilder("board")
+      await this.createQueryBuilder()
       .delete()
       .from(ColumnModel)
       .where('board.id = :id', {id:columnId})

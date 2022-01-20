@@ -4,19 +4,19 @@ import {ColumnModel, IColumnModel} from './column.model';
 interface IBoard {
   id: string,
   title: string,
-  columns: Array<IColumnModel>
+  columns: IColumnModel[]
 }
 
 @Entity({ name: "boards" })
 class Board implements IBoard{
   @PrimaryGeneratedColumn('uuid')
-  id!: string;
+  id: string;
   
   @Column('varchar', {length: 255, default: ''})
-  title!: string;
+  title: string;
 
   @OneToMany(()=> ColumnModel , column => column.board)
-  columns!: Array<IColumnModel>;
+  columns: IColumnModel[];
 
 }
 export {Board, IBoard}

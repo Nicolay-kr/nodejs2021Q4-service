@@ -13,14 +13,14 @@ export interface IUser {
 @Entity({ name: "users" })
 export class User implements IUser{
   @PrimaryGeneratedColumn('uuid')
-  id!: string;
+  id: string;
 
   @Column('varchar', {length: 255, default: 'login'})
-  login!: string;
+  login: string;
 
   @Column('varchar', {length: 255, default: 'user'})
-  name!: string;
+  name: string;
 
   @Column('varchar', {length: 255, select: false})
-  password!: string;
+  password: string;
 }

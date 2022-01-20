@@ -12,6 +12,7 @@ const connectionOptions: ConnectionOptions = {
   username: POSTGRES_USER,
   password: POSTGRES_PASSWORD,
   database: "postgres",
+  logging: false,
   entities: [User, Board, ColumnModel, Task],
   synchronize:false,
   dropSchema: false,

@@ -17,7 +17,7 @@ const get = (id:string) => userRepository.findOne(id);
  * @param {String} id user id
  * @returns {fuction} return call of function remove(user) from user.memory.repository.js 
  */
-const remove = (id:string) => userRepository.delete(id);
+const remove = (id:string) => userRepository.deleteUserById(id);
 /**
  * call the function save(user) from user.memory.repository.js
  * @param {String} id user id
