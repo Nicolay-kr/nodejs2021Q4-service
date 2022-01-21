@@ -16,7 +16,7 @@ class Board implements IBoard{
   title: string;
 
   @OneToMany(()=> ColumnModel , column => column.board)
-  columns: IColumnModel[];
+  columns: ColumnModel[];
 
 }
 export {Board, IBoard}

@@ -13,7 +13,7 @@ class TaskRepository extends Repository<Task> {
     return this.createQueryBuilder("task")
       .where("task.boardId = :boardId", { boardId })
       .andWhere("task.id = :taskId", { taskId })
-      .getMany();
+      .getOne();
   }
 
   async createTask(boardId: string, task: Partial<ITask>) {
@@ -31,8 +31,8 @@ class TaskRepository extends Repository<Task> {
     await this.createQueryBuilder()
       .update()
       .set(updatedTask)
-      .where("task.boardId = :boardId", { boardId })
-      .andWhere("task.id = :taskId", { taskId })
+      .where("boardId = :boardId", { boardId })
+      .andWhere("id = :taskId", { taskId })
       .execute();
     
   return this.getTaskById(boardId, taskId );
@@ -42,8 +42,8 @@ class TaskRepository extends Repository<Task> {
     return this.createQueryBuilder()
       .delete()
       .from(Task)
-      .where("task.boardId = :boardId", { boardId })
-      .andWhere("task.id = :taskId", { taskId })
+      .where('boardId = :boardId', { boardId })
+      .andWhere('id = :taskId', { taskId })
       .execute();
   }
 

@@ -30,5 +30,6 @@ const save = (boardId:string, task:ITask) => taskRepository.createTask(boardId, 
  * @returns return call of function update(id,task) from task.memory.repository.js
  */
 const update = (boardId:string, id:string, task:ITask) => taskRepository.updateTask(boardId, id, task);
-
-export{ getAll, get, remove, save, update };
+const deleteTasksForParticularBoardId = (boardId: string) => taskRepository.deleteTaskForBoardId(boardId);
+const unAssignUserId = (userId: string) => taskRepository.unAssignUserId(userId);
+export{ getAll, get, remove, save, update, deleteTasksForParticularBoardId, unAssignUserId };

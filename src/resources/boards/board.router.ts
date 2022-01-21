@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 
 const router = require('express').Router();
 const boardsService = require('./board.service.ts');
+const tasksService = require('../tasks/task.service.ts')
 
 router
   .route('/')
@@ -36,11 +37,10 @@ router
   .delete(async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { boardId } = req.params;
-      const board = await boardsService.remove(boardId);
-      if (board) {
+      if (boardId) {
+        await boardsService.remove(boardId);
+        await tasksService.deleteTasksForParticularBoardId(boardId);
         res.status(204).json(boardId);
-      } else {
-        res.status(201).send('Bad request');
       }
     } catch (err) {
       next(err);

@@ -35,7 +35,7 @@ export const expressLoader = async ({ app }: LoaderArgs): Promise<Application> =
 
   app.use('/users', userRouter);
   app.use('/boards', boardRouter);
-  boardRouter.use('/boards/:boardId/tasks', taskRouter);
+  app.use('/boards/:boardId/tasks', taskRouter);
 
   app.use(errorHandler);
 

@@ -24,41 +24,41 @@ class BoardRepository extends Repository<Board> {
   }
 
   async updateBoard(id: string, {title, columns}:Partial<IBoard>) {
-    await this.deleteColumnsForBoardId(id)
-    const exBoard = await this.createQueryBuilder()
+    await this.deleteColumnsForParticularBoardId(id)
+    const exBoard = await this.createQueryBuilder('board')
       .where('board.id = :id', { id })
       .getOne()
 
     if(exBoard) {
       await this.setNewBoardData(exBoard, title, columns)
-      return this.getBoardById(id)
+      return this.findOne(id)
     }
 
     return null
   }
 
   async deleteBoardById(id: string) {
-    await this.deleteColumnsForBoardId(id)
-    return this.createQueryBuilder()
+    await this.deleteColumnsForParticularBoardId(id)
+    return this.createQueryBuilder('board')
       .delete()
       .from(Board)
-      .where('board.id = :id', { id })
+      .where('id = :id', { id })
       .execute();
   }
 
-  async deleteColumnsForBoardId(id: string) {
+  async deleteColumnsForParticularBoardId(id: string) {
     const columns = await this.createQueryBuilder()
-    .relation(Board, 'columns')
-    .of(id)
-    .loadMany()
+      .relation(Board, 'columns')
+      .of(id)
+      .loadMany();
 
-    await Promise.all(columns.map(async({id:columnId}) => {
+    await Promise.all(columns.map(async ({ id: columnId }) => {
       await this.createQueryBuilder()
-      .delete()
-      .from(ColumnModel)
-      .where('board.id = :id', {id:columnId})
-      .execute()
-    }))
+        .delete()
+        .from(ColumnModel)
+        .where('id = :id', { id: columnId })
+        .execute();
+    }));
   }
 
   // eslint-disable-next-line class-methods-use-this
