@@ -4,11 +4,16 @@
 
 - Git - [Download & Install Git](https://git-scm.com/downloads).
 - Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager.
+- PostgreSQL - [Download & Install PostgreSQL](https://www.postgresql.org/download/windows/) and the npm package manager.
+-
 
 ## Downloading
 
 ```
 git clone {repository URL}
+git cd nodejs2021Q4-service
+git checkout -b {task_branch}
+git pull origin {task_branch}
 ```
 
 ## Installing NPM modules
@@ -16,11 +21,12 @@ git clone {repository URL}
 ```
 npm install
 ```
+change .env with you credentials for PostgresSQL local server
 
-## Running application
+## Running application locally 
 For first running
 ```
-npm start
+npm run dev
 ```
 if it is'n first running use npm run dev to avoid migrations errors.
 
