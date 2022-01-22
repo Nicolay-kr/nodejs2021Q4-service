@@ -4,11 +4,16 @@
 
 - Git - [Download & Install Git](https://git-scm.com/downloads).
 - Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager.
+- PostgreSQL - [Download & Install PostgreSQL](https://www.postgresql.org/download/windows/) and the npm package manager.
+-
 
 ## Downloading
 
 ```
 git clone {repository URL}
+git cd nodejs2021Q4-service
+git checkout -b {task_branch}
+git pull origin {task_branch}
 ```
 
 ## Installing NPM modules
@@ -16,12 +21,14 @@ git clone {repository URL}
 ```
 npm install
 ```
+change .env with you credentials for PostgresSQL local server
 
-## Running application
-
+## Running application locally 
+For first running
 ```
-npm start
+npm run start
 ```
+if it is'n first running use npm run dev to avoid migrations errors.
 
 After starting the app on port (4000 as default) you can open
 in your browser OpenAPI documentation by typing http://localhost:4000/doc/.
@@ -70,3 +77,48 @@ npm run lint
 Press <kbd>F5</kbd> to debug.
 
 For more information, visit: https://code.visualstudio.com/docs/editor/debugging
+
+## Run in docker
+
+```
+cd {repository name}
+```
+
+```
+docker-compose up -d
+```
+## Postgres command
+
+Connects to a database under a specific user	-d: used to state the database name 
+-U:used to state the database user
+```
+psql -d database -U user -W	
+```
+
+List available databases
+```
+\l
+```
+
+Switch connection to a new database
+```
+\c dbname
+```
+
+List available tables
+```
+\dt
+```
+
+Describe a table such as a column, type, modifiers of columns, etc.
+```
+\d table_name
+```
+Select all users
+```
+SELECT * FROM users;
+```
+Delete all content in table user
+```
+TRUNCATE users;
+```
