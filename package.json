@@ -16,7 +16,10 @@
     "test:auth": "cross-env DEBUG=rs:* TEST_MODE=auth jest --noStackTrace",
     "migration:generate": "npm run typeorm migration:generate -- -n MigrationFile",
     "migration:run": "npm run typeorm -- migration:run",
-    "typeorm": "node  --require ts-node/register ./node_modules/typeorm/cli.js --config ./src/common/ormconfig.ts"
+    "typeorm": "node  --require ts-node/register ./node_modules/typeorm/cli.js --config ./src/common/ormconfig.ts",
+    "typeorm-seeding": "ts-node ./node_modules/typeorm-seeding/dist/cli.js --configName src/common/ormconfig.ts",
+    "seed:config": "npm run typeorm-seeding config",
+    "seed:run": "npm run typeorm-seeding seed"
   },
   "keywords": [
     "rs",
