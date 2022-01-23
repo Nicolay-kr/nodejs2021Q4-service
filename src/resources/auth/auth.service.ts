@@ -1,11 +1,9 @@
 import bcrypt from 'bcrypt';
-import { getCustomRepository } from 'typeorm';
-import { UserRepository } from '../users/user.repository';
+import { userRepository } from '../users/user.memory.repository';
 
-import User from '../users/user.entity';
+import { User } from '../users/user.model';
 
 const findByCredentials = async (login: string, password: string): Promise<User | null> => {
-  const userRepository = getCustomRepository(UserRepository);
   const user = await userRepository.findOne({ login });
 
   if (!user) return null;

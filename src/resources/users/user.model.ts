@@ -38,4 +38,8 @@ export class User implements IUser{
     });
     return token;
   }
+  
+  static toResponse({ id, login, name }: User) {
+    return { id, login, name };
+  }
 }
