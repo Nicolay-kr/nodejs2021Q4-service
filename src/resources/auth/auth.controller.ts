@@ -11,7 +11,7 @@ const logIn = asyncHandler(async (req: Request, res: Response) => {
     throw new Error(StatusCodes.FORBIDDEN.toString());
   }
   const token = await user.generateAuthToken();
-  return res.status(StatusCodes.OK).json({ token, user: User.toResponse(user) });
+  res.status(StatusCodes.OK).json({ token, user: User.toResponse(user) });
 });
 
 export default { logIn };
