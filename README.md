@@ -22,7 +22,10 @@ npm install
 ## Running application on locally 
 For first running
 ```
-npm  run start
+npm run start
+npm run migration:run
+npm run seed:run
+npm run test:auth
 ```
 if it is'n first running use npm run dev to avoid migrations errors.
 
