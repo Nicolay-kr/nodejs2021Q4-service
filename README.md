@@ -9,6 +9,8 @@
 
 ```
 git clone {repository URL}
+git cd nodejs2021Q4-service
+git checkout {task_branch}
 ```
 
 ## Installing NPM modules
@@ -17,10 +19,10 @@ git clone {repository URL}
 npm install
 ```
 
-## Running application
+## Running application on locally 
 For first running
 ```
-npm start
+npm  run start
 ```
 if it is'n first running use npm run dev to avoid migrations errors.
 

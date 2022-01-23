@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, BeforeInsert } from "typeorm";
+import bcrypt from 'bcrypt';
 
 // const uuid = require('uuid');
 
@@ -23,4 +24,9 @@ export class User implements IUser{
 
   @Column('varchar', {length: 255, select: false})
   password: string;
+
+  @BeforeInsert()
+  generatePasswordHash() {
+    this.password = bcrypt.hashSync(this.password, 10);
+  }
 }
