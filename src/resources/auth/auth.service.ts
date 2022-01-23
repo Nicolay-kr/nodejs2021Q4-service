@@ -1,30 +1,17 @@
-import { Forbidden } from 'http-errors';
-import { getRepository } from 'typeorm';
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import { User } from '../users/user.model';
-import { JWT_SECRET_KEY } from '../../common/config';
+import { getCustomRepository } from 'typeorm';
+import { UserRepository } from '../users/user.repository';
 
-export const login = async (data: {
-  login: string;
-  password: string;
-}): Promise<{ token: string }> => {
-  const user = await getRepository(User).findOne({
-    where: { login: data.login },
-  });
+import User from '../users/user.entity';
 
-  if (!user) {
-    throw new Forbidden();
-  }
+const findByCredentials = async (login: string, password: string): Promise<User | null> => {
+  const userRepository = getCustomRepository(UserRepository);
+  const user = await userRepository.findOne({ login });
 
-  if (!bcrypt.compareSync(data.password, user.password)) {
-    throw new Forbidden();
-  }
-
-  const token = jwt.sign(
-    { userId: user.id, login: user.login },
-    JWT_SECRET_KEY as string
-  );
-
-  return { token };
+  if (!user) return null;
+  const isPasswordMatch = await bcrypt.compare(password, user.password);
+  if (!isPasswordMatch) return null;
+  return user;
 };
+
+export default { findByCredentials };
