@@ -6,4 +6,4 @@ const router = Router();
 
 router.route('/login').post(AuthController.logIn);
 
-export default router;
+export {router};

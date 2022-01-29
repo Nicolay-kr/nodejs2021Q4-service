@@ -9,7 +9,7 @@ export interface TokenInterface {
   login: string;
 }
 
-export const auth = asyncHandler(async (req: Request, _res: Response, next: NextFunction) => {
+export const auth = asyncHandler(async (req: Request, res: Response, next: NextFunction) => {
   if (req.method === 'OPTIONS') {
     return next(); // allowing options as a method for request
   }
@@ -21,10 +21,11 @@ export const auth = asyncHandler(async (req: Request, _res: Response, next: Next
     }
 
     if (!sessionToken) {
-      throw new Error('Not authorized to access this resource. Auth token is not supplied');
+      res.status(401).send('Not authorized to access this resource. Auth token is not supplied');
+      // throw new Error('Not authorized to access this resource. Auth token is not supplied');
     }
 
-    const decoded = jwt.verify(sessionToken, JWT_SECRET_KEY!) as TokenInterface;
+    const decoded = jwt.verify(sessionToken!, JWT_SECRET_KEY!) as unknown as TokenInterface;
 
     if (!decoded || !decoded.userId) {
       throw new Error('Not authorized to access this resource. Token is not valid');

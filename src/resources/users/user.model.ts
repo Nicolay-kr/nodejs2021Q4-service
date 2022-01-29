@@ -24,7 +24,7 @@ export class User implements IUser{
   @Column('varchar', {length: 255, default: 'user'})
   name: string;
 
-  @Column('varchar', {length: 255, select: false})
+  @Column('varchar', {length: 255 })
   password: string;
 
   @BeforeInsert()
