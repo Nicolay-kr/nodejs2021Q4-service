@@ -10,8 +10,8 @@ export const loadersInit = async ({ expressApp }: { expressApp: Application }) =
   const {userRepository} = await import('../resources/users/user.memory.repository');
   const admin = new User();
   admin.name = 'TEST_USER';
-  admin.login = 'test_user';
-  admin.password = 'T35t_P@55w0rd';    
+  admin.login = 'admin';
+  admin.password = 'admin';    
   await userRepository.save(admin);
 
 
