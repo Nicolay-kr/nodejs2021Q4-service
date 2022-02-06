@@ -1,1 +1,0 @@
-export declare const PORT: string | undefined, NODE_ENV: string | undefined, JWT_SECRET_KEY: string | undefined, AUTH_MODE: string | undefined, POSTGRES_PORT: string | undefined, POSTGRES_USER: string | undefined, POSTGRES_PASSWORD: string | undefined, POSTGRES_HOST: string | undefined, POSTGRES_DB: string | undefined, PGDATA: string | undefined;

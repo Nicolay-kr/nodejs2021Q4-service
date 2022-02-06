@@ -1,3 +1,4 @@
-test/
-@types
-database
+node_modules
+doc
+jsDocs
+test
