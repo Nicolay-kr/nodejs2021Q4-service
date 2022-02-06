@@ -14,6 +14,6 @@ async function bootstrap() {
   }
   const commonConfigService = app.get(CommonConfigService);
 
-  await app.listen(commonConfigService.PORT);
+  await app.listen(commonConfigService.PORT, commonConfigService.HOST);
 }
 bootstrap();

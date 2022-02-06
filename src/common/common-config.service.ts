@@ -13,6 +13,9 @@ export class CommonConfigService {
   get PORT(): number {
     return +this.configService.get('PORT') || 4000;
   }
+  get HOST(): string {
+    return this.configService.get('HOST') || '0.0.0.0';
+  }
 
   get OrmConfig(): TypeOrmModuleOptions {
     return {
