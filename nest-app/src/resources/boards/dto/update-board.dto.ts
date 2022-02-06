@@ -1,4 +1,6 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateBoardDto } from './create-board.dto';
+import { ColumnEntity } from '../entities/column.entity';
 
-export class UpdateBoardDto extends PartialType(CreateBoardDto) {}
+export class UpdateBoardDto {
+  title?: string;
+  columns?: ColumnEntity[];
+}

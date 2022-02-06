@@ -99,3 +99,10 @@
 [32m[32minfo[32m[39m:    POST /boards - {"title":"Autotest board","columns":[{"title":"Backlog","order":1},{"title":"Sprint","order":2}]} {}
 [32m[32minfo[32m[39m:    DELETE /boards/undefined - {} {}
 [32m[32minfo[32m[39m:    POST /boards - {"title":"Autotest board","columns":[{"title":"Backlog","order":1},{"title":"Sprint","order":2}]} {}
+[31m[31merror[31m[39m:   Error: listen EADDRINUSE: address already in use :::4000
+    at Server.setupListenHandle [as _listen2] (net.js:1320:16)
+    at listenInCluster (net.js:1368:12)
+    at Server.listen (net.js:1454:7)
+    at Function.listen (C:\Users\Mikalai_Kryshchanovi\Desktop\RSS\NodeJS\nodejs2021Q4-service\node_modules\express\lib\application.js:618:24)
+    at startServer (C:\Users\Mikalai_Kryshchanovi\Desktop\RSS\NodeJS\nodejs2021Q4-service\src\server.ts:9:7)
+    at processTicksAndRejections (internal/process/task_queues.js:95:5)
